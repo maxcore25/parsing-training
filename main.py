@@ -1,5 +1,9 @@
+import time
+from selenium.webdriver.common.keys import Keys
 import requests
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
 import os
 from dotenv import load_dotenv
 
@@ -17,11 +21,13 @@ def use_bs():
 
 
 def use_selenium():
+    # driver = webdriver.Chrome(ChromeDriverManager().install())
     browser = webdriver.Chrome()
     browser.get(os.getenv('URL'))
 
-    xpath = '/html/body/div[1]/div[1]/div[1]/dl/dd/div[7]/div[1]/div/button'
-    browser.find_element_by_xpath(xpath).click()
+    xpath = '/html/body/div[13]/div[2]/div/div/div/div/a[1]'
+    browser.find_element(by=By.XPATH, value=xpath).click()
+    time.sleep(3)
 
 
 def main():
